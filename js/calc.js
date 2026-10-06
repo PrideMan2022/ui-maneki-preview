@@ -167,7 +167,7 @@
     function state() {
       var svc = val('svc') || 'product';
       if (svc === 'people') return { svc: svc, qty: num('c-l-qty'), persons: val('l-persons') };
-      if (svc === 'info') return { svc: svc, qty: num('c-i-qty'), mode: val('i-mode'), photo: form.querySelector('#c-i-photo').checked, cover: form.querySelector('#c-i-cover').checked };
+      if (svc === 'info') return { svc: svc, qty: +(val('i-pack') || 6), mode: val('i-mode') };
       if (svc === 'video') return { svc: svc, kind: val('v-kind'), qty: num('c-v-qty') };
       return { svc: svc, qty: num('c-p-qty'), mode: val('p-mode') };
     }
@@ -184,12 +184,6 @@
       });
       var vq = box.querySelector('[data-video-qty]');
       if (vq) vq.hidden = s.svc !== 'video' || s.kind === 'roll';
-      if (s.svc === 'info') {
-        var packed = !!P.info.packs[clamp(s.qty, 1, P.info.maxQty)];
-        ['c-i-photo', 'c-i-cover'].forEach(function (id) { var el = form.querySelector('#' + id); el.disabled = packed; });
-        var ih = box.querySelector('[data-info-hint]');
-        if (ih) ih.hidden = !packed;
-      }
     }
     function render() {
       var s = state();

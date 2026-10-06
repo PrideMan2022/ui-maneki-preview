@@ -128,14 +128,8 @@
 </div>
 
 <div class="calc__group" data-group="info" hidden>
-<div><label class="lbl" for="c-i-qty">Сколько слайдов</label>
-<div class="calc__row"><div class="stepper"><button type="button" data-step="-1" aria-label="Меньше: слайдов">−</button><input id="c-i-qty" type="number" inputmode="numeric" min="1" max="20" value="6"><button type="button" data-step="1" aria-label="Больше: слайдов">+</button></div><div class="quick" data-for="c-i-qty" role="group" aria-label="Пакеты слайдов"><button type="button" data-set="6" aria-pressed="true">6 — пакет</button><button type="button" data-set="10" aria-pressed="false">10 — пакет</button></div></div></div>
+<fieldset><legend>Пакет слайдов</legend><div class="segs"><label class="seg"><input type="radio" name="i-pack" value="6" checked><span>6 слайдов — «Оптимальный»</span></label><label class="seg"><input type="radio" name="i-pack" value="10"><span>10 слайдов — «Расширенный»</span></label></div></fieldset>
 <fieldset><legend>Формат</legend><div class="segs"><label class="seg"><input type="radio" name="i-mode" value="tz" checked><span>По вашему ТЗ</span></label><label class="seg"><input type="radio" name="i-mode" value="key"><span>Под ключ</span></label></div></fieldset>
-<div class="segs" style="display:grid;gap:.75rem">
-<label class="chk"><input type="checkbox" id="c-i-photo" disabled><span>Нейрофото на каждый слайд<small>300 ₽ за слайд</small></span></label>
-<label class="chk"><input type="checkbox" id="c-i-cover" disabled><span>Видеообложка<small>1 200 ₽</small></span></label>
-<p class="calc__hint" data-info-hint>Нейрофото и оживлённая обложка уже входят в пакет на 6 и 10 слайдов.</p>
-</div>
 </div>
 
 <div class="calc__group" data-group="video">
