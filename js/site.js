@@ -156,7 +156,12 @@
   window.addEventListener('hashchange', openFromHash);
 
   /* Ролик в первом экране: стартует после загрузки страницы, не мешая первому показу */
-  function play(v) { v.muted = true; v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  function play(v) {
+    v.muted = true; v.preload = 'auto';
+    var p = v.play();
+    // браузер не дал запустить ролик сам — возвращаем обложку, запустить можно кнопкой
+    if (p && p.catch) p.catch(function () { v.preload = 'none'; v.load(); });
+  }
   function startVideos() {
     var vids = $$('video[data-autoplay]');
     if (reduce || !vids.length) return;
