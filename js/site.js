@@ -168,7 +168,13 @@
     if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
     var vo = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        if (e.isIntersecting) { if (!e.target.dataset.userPaused) play(e.target); } else if (!e.target.paused) e.target.pause();
+        var v = e.target;
+        if (e.isIntersecting) { if (!v.dataset.userPaused) play(v); }
+        else {
+          if (!v.paused) v.pause();
+          // ролик так и не пошёл — показываем обложку, а не первый кадр
+          if (v.currentTime < 0.2 && v.readyState > 0) { v.preload = 'none'; v.load(); }
+        }
       });
     }, { threshold: 0.25 });
     vids.forEach(function (v) { vo.observe(v); });
